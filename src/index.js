@@ -1,19 +1,20 @@
 
+import { topSkills } from "./top_skills";
+import {jobPosts} from "./job_posts.js"
+
 document.addEventListener("DOMContentLoaded", main);
 
 function main() {
     const titleForSkillsInput = document.querySelector(".title-for-skills")
-
-    titleForSkillsInput.addEventListener("click", showSkills);
+    titleForSkillsInput.addEventListener("click", showSkillsAndJobs);
 }
 
-async function showSkills(event) {
+async function showSkillsAndJobs(event) {
     const titleInput = event.target.value
-    const res = await fetch("../data/pdl_skills_for_us_software_engineers.json");
-    const allSkillsByTitle = await res.json();
-
-    if (allSkillsByTitle[titleInput]){
-        console.log(allSkillsByTitle[titleInput]);
-        return allSkillsByTitle[titleInput]
+    if (!titleInput){
+        return;
     }
+    await new topSkills(titleInput);
+
+    await new jobPosts(titleInput);
 }
