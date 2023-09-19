@@ -6,50 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>JobTrends</title>
+    <link rel="icon" href="./imgs/data-visualization.png" type="image/png">
 </head>
 <body>
     <header class="header">
-        <div class="job-trends-title">
-            <h1>JobTrends</h1>
-        </div>
-        <div class="about">
-            <h3>By Swathi Balasubramanyam</h3>
-            <div class="links">
-                <a href="https://github.com/SwathiBalasubramanyam" target="_blank">github</a>
-                <a href="https://www.linkedin.com/in/swathi-balasubramanyam-4a4280124/" target="_blank">linkedin</a>
+        <div class="title">Job Trends</div>
+        <div class="about-me">
+            <div class="about-me-links">
+                <a class="header-link" href="https://github.com/SwathiBalasubramanyam" target="_blank">
+                    <img src="./imgs/github.png" alt="">
+                </a>
+                <a class="header-link" href="https://www.linkedin.com/in/swathi-balasubramanyam-4a4280124/" target="_blank">
+                    <img src="./imgs/linkedin.png" alt="">
+                </a>
             </div>
         </div>
     </header>
 
+
     <div class="page-content">
-        <div class="job-trends-intro">
-            <p>Welcome to JobTrends, a data visualization site, that aims at listing top skills for a given role, companies hiring for the role and also displays any job postings matching the selected criteria. Please enter a job title to start with...</p>
-        </div>
-
-        <div class="user-input">
-            <form action="">
-                <label> Please enter a title
-                    <input type="text" name="user-input-text" value="">
-                </label>
-                <input class="user-input-btn" type="submit" value="Get Insights!!">
-            </form>
-            <br>
-            <br>
-        </div>
-
-        <div class="results">
-            <div class="successful-results" hidden>
-                <div class="skills"></div>
-                <div class="companies"></div>
-                <div class="locations"></div>
-                <div class="job-posts"></div>
-            </div>
-
-            <div class="unsuccessful-results" hidden>
-                <div class="unsuccessful-results-msg">Sorry, we couldnt pull any results for the given title</div>
-            </div>
+        <div class="intro-text">JobTrends is a data visualization site that displays current job trends based on a given title. , Users can enter title / location/ company in a searchable input box, upon which the website suggests top most skills listed for a given title or gives the top most employers for the given location or suggests companies hiring at a given location. The users will also be able to see any job postings that are listed for a given title/location/company.
+        </div>  
+        <div>This is my another div</div> 
     </div>
     
 </body>

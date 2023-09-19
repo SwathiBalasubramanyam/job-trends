@@ -1,6 +1,6 @@
 import {jobPosts} from "./job_posts.js"
 import { jobCard } from "./job_card.js";
-import { plotSkills, plotCompanies, plotLocations } from "./graph.js";
+import { plotGraph} from "./graph.js";
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -57,19 +57,23 @@ class jobTrends{
         const skillGraphEle = document.createElement("canvas")
         skillGraphEle.id = "skills-graph"
         skillEle.appendChild(skillGraphEle)
-        plotSkills(this.jobPostsIns.skillsCnt);
+        let num = 15;
+
+        plotGraph(this.jobPostsIns.skillsCnt, "skills-graph", `${num} most listed skills for ${this.currentTitle}`, num);
 
         const companiesEle = document.querySelector(".companies")
         const companiesGraphEle = document.createElement("canvas")
         companiesGraphEle.id = "companies-graph"
         companiesEle.appendChild(companiesGraphEle)
-        plotCompanies(this.jobPostsIns.companiesCnt);
+        plotGraph(this.jobPostsIns.companiesCnt, "companies-graph", `Top ${num} companies hiring for ${this.currentTitle}`, num);
+
 
         const locationsEle = document.querySelector(".locations")
         const locationsGraphEle = document.createElement("canvas")
         locationsGraphEle.id = "locations-graph"
         locationsEle.appendChild(locationsGraphEle)
-        plotLocations(this.jobPostsIns.locationsCnt);
+        plotGraph(this.jobPostsIns.locationsCnt, "locations-graph", `Top ${num} locations for ${this.currentTitle}`, num);
+
     }
 }
 

@@ -1,0 +1,28 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-image: url("./../../imgs/data_visualization_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.about-me {
+    margin: 30px;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 750;
+    margin-top: 20px;
+}
+
+.header-link > img {
+    height: 27px;
+    width: 27px;
+    margin-right: 5px;
+}
+

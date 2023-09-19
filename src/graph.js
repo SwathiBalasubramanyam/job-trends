@@ -1,60 +1,30 @@
 
-export function plotSkills(data){
+export function plotGraph(data, domId, displayText, num){
+    let data_sorted = Object.fromEntries(Object.entries(data).sort((a, b) => b[1]-a[1]).slice(0, num))
+    let xValues = Object.keys(data_sorted);
+    let yValues = Object.values(data_sorted);
+    let backgroundColors = ['#cdb4db', '#ffc8dd', '#ffafcc', '#bde0fe', '#a2d2ff']
 
-    let xValues = Object.keys(data);
-    let yValues = Object.values(data);
+    let graphBackgroundColors = []
+    while (graphBackgroundColors.length <= num){
+        graphBackgroundColors = graphBackgroundColors.concat(backgroundColors)
+    }
 
-    new Chart("skills-graph", {
+    new Chart(domId, {
         type: "pie",
         data: {
           labels: xValues,
           datasets: [{
-            data: yValues
+            backgroundColor: graphBackgroundColors.slice(0,num),
+            data: yValues,
+
           }]
         },
         options: {
           title: {
             display: true,
-            text: "Skills in job posts"
+            text: displayText
           }
         }
       });
-}
-
-export function plotCompanies(data){
-
-    let xValues = Object.keys(data);
-    let yValues = Object.values(data);
-
-    const myChart = new Chart("companies-graph", 
-        {
-            type: 'bar',
-            data: {
-                labels: xValues,
-                datasets: [{
-                    data: yValues
-                }]
-            }
-        }
-    )
-    
-}
-
-export function plotLocations(data){
-
-    let xValues = Object.keys(data);
-    let yValues = Object.values(data);
-
-    const myChart = new Chart("locations-graph", 
-        {
-            type: 'bar',
-            data: {
-                labels: xValues,
-                datasets: [{
-                    data: yValues
-                }]
-            }
-        }
-    )
-    
 }
