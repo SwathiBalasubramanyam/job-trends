@@ -4,10 +4,8 @@ export class jobPosts{
 
     constructor(titleInput){
         this.titleInput = titleInput;
-        this.jobPostsInfo = document.querySelector(".job-posts-info")
-        while (this.jobPostsInfo.firstChild) {
-            this.jobPostsInfo.removeChild(this.jobPostsInfo.firstChild);
-        }
+        this.jobPostsSuccess = document.querySelector(".job-posts-success")
+        this.jobPostsFaliure = document.querySelector(".job-posts-failure")
         this.getJobs().then(this.render.bind(this));
     }
 
@@ -18,15 +16,34 @@ export class jobPosts{
     }
 
     render(){
-        for (const key in this.jobPosts) {
-            const jobPost = this.jobPosts[key];
+        this.jobs = [];
+        while (this.jobPostsSuccess.firstChild) {
+            this.jobPostsSuccess.removeChild(this.jobPostsSuccess.firstChild);
+        }
+        for (const [jobId, jobPost] of Object.entries(this.jobPosts)) {
             let postingsTitle = jobPost['title'].toLowerCase();
-            if (postingsTitle !== this.titleInput){
-                continue;
+            if (postingsTitle === this.titleInput){
+                this.jobs.push(jobPost);
             }
-            const jobCardIns = new jobCard(jobPost);
-            jobCardIns.createElement();
-            this.jobPostsInfo.append(jobCardIns.domEle);
+        }
+        if (!this.jobs.length){
+            this.jobPostsSuccess.setAttribute("hidden", "hidden");
+            this.jobPostsFaliure.removeAttribute("hidden")
+        } else {
+            this.jobPostsFaliure.setAttribute("hidden", "hidden");
+            this.jobPostsSuccess.removeAttribute("hidden", "hidden");
+
+            const jobCardsContainer = document.createElement("div")
+            jobCardsContainer.className = "job-cards-container";
+
+            this.jobs = this.jobs.map((jobPost) => {
+                const jobCardIns = new jobCard(jobPost);
+                jobCardsContainer.appendChild(jobCardIns.domEle);
+                return jobCardIns;
+            })
+
+            this.jobPostsSuccess.appendChild(jobCardsContainer);
+            this.jobs[0].showDetails();
         }
     }
 }

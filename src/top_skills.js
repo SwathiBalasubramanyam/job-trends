@@ -4,6 +4,9 @@ export class topSkills{
         this.titleInput = titleInput;
         this.topSkillsSuccessList = document.querySelector(".top-skills-success");
         this.topSkillsFailureList = document.querySelector(".top-skills-failure");
+        this.removeChildren(this.topSkillsSuccessList);
+        this.removeChildren(this.topSkillsFailureList);
+
         this.getSkills()
             .then(this.handleSkills.bind(this));
     }
@@ -16,8 +19,6 @@ export class topSkills{
     }
 
     handleSkills(){
-        this.removeChildren(this.topSkillsSuccessList);
-    
         if (this.skills){
             this.topSkillsFailureList.setAttribute("hidden", "hidden")
             this.showSkillsSuccess(); 
@@ -47,6 +48,7 @@ export class topSkills{
     }
 
     showSkillsFailure(){
+        this.topSkillsFailureList.innerText = `Sorry we couldnt find any skills for the given title ..`
         this.topSkillsFailureList.removeAttribute("hidden");
     } 
 }

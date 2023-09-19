@@ -24,25 +24,28 @@
 
     <div class="page-content">
         <div class="job-trends-intro">
-            <p>Welcome to JobTrends, a data visualization site that aims at presenting the most sought after skills for a given role, displays some of the companies hiring at a given location. This site also displays any open job postings matching the selected criteria. Please enter a title to start with.</p>
-            <label class="title-for-skills"> Title
-                <input type="text" name="title-for-skills" value="">
-            </label>
-            <ul class="top-skills">
-                <ul class="top-skills-success" hidden></ul>
-                <ul class="top-skills-failure" hidden>Sorry we couldnt find any skills for the given title ..</ul>
-            </ul>
+            <p>Welcome to JobTrends, a data visualization site that aims at presenting the top skills for a given role and also displays any job postings matching the selected criteria. Please enter a job title to start with...</p>
+        </div>
 
-            <ul class="job-posts">
+        <div class="user-input">
+            <form action="">
+                <label> Please enter a title
+                    <input type="text" name="title-for-skills" value="">
+                </label>
+                <input class="title-input-btn" type="submit" value="Get Insights!!">
+            </form>
+        </div>
+
+        <div class="results">
+            <div class="skills" >
+                <ul class="top-skills-success" hidden></ul>
+                <ul class="top-skills-failure" hidden></ul>
+            </div>
+
+            <div class="job-posts">
                 <ul class="job-posts-success" hidden></ul>
                 <ul class="job-posts-failure" hidden>Sorry we couldnt find any job postings for the given title ..</ul>
-            </ul>
-        </div>
-
-        <div class="job-posts-info">
-
-        </div>
-
+            </div>
     </div>
     
 </body>
