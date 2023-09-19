@@ -27,7 +27,7 @@ export class jobCard{
     }
 
     showDetails(){
-        const superParent = document.querySelector(".job-posts-success");
+        const superParent = document.querySelector(".job-posts");
 
         const parentEle = document.querySelector(".job-desc-container");
         if (parentEle){

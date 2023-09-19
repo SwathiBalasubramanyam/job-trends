@@ -4,46 +4,42 @@ export class jobPosts{
 
     constructor(titleInput){
         this.titleInput = titleInput;
-        this.jobPostsSuccess = document.querySelector(".job-posts-success")
-        this.jobPostsFaliure = document.querySelector(".job-posts-failure")
-        this.getJobs().then(this.render.bind(this));
     }
 
-    async getJobs(){
+    async fetchJobs(){
         const res = await fetch("./../src/data/job_postings.json")
-        this.jobPosts = await res.json();
-        return;
+        this.allJobPosts = await res.json();
     }
 
-    render(){
-        this.jobs = [];
-        while (this.jobPostsSuccess.firstChild) {
-            this.jobPostsSuccess.removeChild(this.jobPostsSuccess.firstChild);
-        }
-        for (const [jobId, jobPost] of Object.entries(this.jobPosts)) {
+    getJobs(){
+        this.jobPosts = [];
+        this.skillsCnt = {};
+        this.companiesCnt = {};
+        this.locationsCnt = {};
+
+        for (const [_, jobPost] of Object.entries(this.allJobPosts)) {
             let postingsTitle = jobPost['title'].toLowerCase();
-            if (postingsTitle === this.titleInput){
-                this.jobs.push(jobPost);
+            if (postingsTitle !== this.titleInput){
+                continue;
             }
+
+            this.jobPosts.push(jobPost);
+
+            jobPost['skills_desc'].forEach(skill => {
+                if(!this.skillsCnt[skill]) this.skillsCnt[skill] = 0;
+                this.skillsCnt[skill] += 1;  
+            });
+
+            if(!this.companiesCnt[jobPost['company_name']]){
+                this.companiesCnt[jobPost['company_name']] = 0;
+            }
+            this.companiesCnt[jobPost['company_name']] += 1;
+
+            if(!this.locationsCnt[jobPost['location']]){
+                this.locationsCnt[jobPost['location']] = 0;
+            }
+            this.locationsCnt[jobPost['location']] += 1;
         }
-        if (!this.jobs.length){
-            this.jobPostsSuccess.setAttribute("hidden", "hidden");
-            this.jobPostsFaliure.removeAttribute("hidden")
-        } else {
-            this.jobPostsFaliure.setAttribute("hidden", "hidden");
-            this.jobPostsSuccess.removeAttribute("hidden", "hidden");
-
-            const jobCardsContainer = document.createElement("div")
-            jobCardsContainer.className = "job-cards-container";
-
-            this.jobs = this.jobs.map((jobPost) => {
-                const jobCardIns = new jobCard(jobPost);
-                jobCardsContainer.appendChild(jobCardIns.domEle);
-                return jobCardIns;
-            })
-
-            this.jobPostsSuccess.appendChild(jobCardsContainer);
-            this.jobs[0].showDetails();
-        }
+        
     }
 }

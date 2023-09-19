@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>></script>
     <title>JobTrends</title>
 </head>
 <body>
@@ -24,27 +25,30 @@
 
     <div class="page-content">
         <div class="job-trends-intro">
-            <p>Welcome to JobTrends, a data visualization site that aims at presenting the top skills for a given role and also displays any job postings matching the selected criteria. Please enter a job title to start with...</p>
+            <p>Welcome to JobTrends, a data visualization site, that aims at listing top skills for a given role, companies hiring for the role and also displays any job postings matching the selected criteria. Please enter a job title to start with...</p>
         </div>
 
         <div class="user-input">
             <form action="">
                 <label> Please enter a title
-                    <input type="text" name="title-for-skills" value="">
+                    <input type="text" name="user-input-text" value="">
                 </label>
-                <input class="title-input-btn" type="submit" value="Get Insights!!">
+                <input class="user-input-btn" type="submit" value="Get Insights!!">
             </form>
+            <br>
+            <br>
         </div>
 
         <div class="results">
-            <div class="skills" >
-                <ul class="top-skills-success" hidden></ul>
-                <ul class="top-skills-failure" hidden></ul>
+            <div class="successful-results" hidden>
+                <div class="skills"></div>
+                <div class="companies"></div>
+                <div class="locations"></div>
+                <div class="job-posts"></div>
             </div>
 
-            <div class="job-posts">
-                <ul class="job-posts-success" hidden></ul>
-                <ul class="job-posts-failure" hidden>Sorry we couldnt find any job postings for the given title ..</ul>
+            <div class="unsuccessful-results" hidden>
+                <div class="unsuccessful-results-msg">Sorry, we couldnt pull any results for the given title</div>
             </div>
     </div>
     
