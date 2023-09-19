@@ -12,7 +12,7 @@ export class topSkills{
     }
 
     async getSkills(){
-        const res = await fetch("../data/pdl_skills_for_us_software_engineers.json");
+        const res = await fetch("../src/data/pdl_skills_for_us_software_engineers.json");
         this.allSkillsByTitle = await res.json();
         this.skills = this.allSkillsByTitle[this.titleInput];
         return;
