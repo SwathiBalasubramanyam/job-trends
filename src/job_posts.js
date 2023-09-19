@@ -10,7 +10,7 @@ export class jobPosts{
     }
 
     async getJobs(){
-        const res = await fetch("../data/job_postings.json")
+        const res = await fetch("../src/data/job_postings.json")
         this.jobPosts = await res.json();
         return;
     }
