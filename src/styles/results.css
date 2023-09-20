@@ -49,6 +49,10 @@
     cursor: pointer;
 }
 
+/* div[is-shown='is-shown']{
+    background-color: blue;
+} */
+
 .job-desc-container {
     background-color: white;
     border-radius: 5px;

@@ -29,6 +29,7 @@ export class jobCard{
         this.removeShown();
         this.jobCardDomEle.setAttribute("is-shown", "is-shown");
         this.jobCardDomEle.style.backgroundColor = "#a8d4ff";
+        
         const superParent = document.querySelector(".job-posts");
 
         const parentEle = document.querySelector(".job-desc-container");

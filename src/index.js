@@ -7,18 +7,25 @@ document.addEventListener("DOMContentLoaded", main);
 class jobTrends{
 
     constructor(){
-        this.getInsightsBtn = document.querySelector(".user-input-btn");
-        this.userTitleInput = document.querySelector("input[name='user-input-text']")
+        this.getInsightsBtn = document.querySelector(".nav-user-input-btn");
+        this.userTitleInput = document.querySelector("input[name='nav-user-input-text']")
         this.jobPostsSuccess = document.querySelector(".successful-results")
         this.jobPostsFaliure = document.querySelector(".unsuccessful-results")
+
+        this.savedJobsBtn = document.querySelector(".nav-bar-jobs")
+
+        this.savedJobsBtn.addEventListener("click", this.getSavedJobs.bind(this))
+
         this.userTitleInput.addEventListener("click", () => {
             this.userTitleInput.value = ""
         })
         this.getInsightsBtn.addEventListener("click", this.getInsights.bind(this))
+
     }
 
     async getInsights(event){
         event.preventDefault();
+        this.hideIntroModal();
         this.currentTitle = this.userTitleInput.value
         this.jobPostsIns = new jobPosts(this.currentTitle);
         await this.jobPostsIns.fetchJobs()
@@ -88,6 +95,35 @@ class jobTrends{
         while(domEle.firstChild){
             domEle.removeChild(domEle.firstChild)
         }
+    }
+
+    hideIntroModal(){
+        this.pageContent = document.querySelector(".page-content");
+        this.introModal = document.querySelector(".intro");
+        if (this.introModal){
+            this.pageContent.removeChild(this.introModal)
+        }
+    }
+
+    async getSavedJobs(event){
+        event.preventDefault();
+        this.hideIntroModal();
+        this.hideGraphs();
+        
+        this.currentTitle = this.userTitleInput.value
+        this.jobPostsIns = new jobPosts(this.currentTitle);
+        await this.jobPostsIns.fetchJobs()
+            .then(this.jobPostsIns.getJobs.bind(this.jobPostsIns));
+
+        if(!this.jobPostsIns.jobPosts.length){
+            this.jobPostsSuccess.setAttribute("hidden", "hidden")
+            this.jobPostsFaliure.removeAttribute("hidden")
+        } else {
+            this.jobPostsSuccess.removeAttribute("hidden")
+            this.jobPostsFaliure.setAttribute("hidden", "hidden")
+            this.handleJobPosts();
+        }
+
     }
 }
 
