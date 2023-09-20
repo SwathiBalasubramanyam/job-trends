@@ -15,11 +15,11 @@ export class jobCard{
         domEle.setAttribute("id", this.jobId);
 
         const compEle = document.createElement("div");
-        compEle.innerText = `${this.companyName}`
+        compEle.innerText = `${this.companyName} (${this.workType})`
         domEle.appendChild(compEle);
 
         const locEle = document.createElement("div");
-        locEle.innerText = `${this.location}(${this.workType})`
+        locEle.innerText = `${this.location}`
         domEle.appendChild(locEle);
 
         domEle.addEventListener("click", this.showDetails.bind(this))

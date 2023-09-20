@@ -8,7 +8,7 @@
     <script src="./dist/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>JobTrends</title>
-    <link rel="icon" href="./imgs/data-visualization.png" type="image/png">
+    <link rel="icon" href="./../../imgs/data_visualization_background.jpg" type="image/png">
 </head>
 <body>
     <header class="header">
@@ -27,9 +27,35 @@
 
 
     <div class="page-content">
-        <div class="intro-text">JobTrends is a data visualization site that displays current job trends based on a given title. , Users can enter title / location/ company in a searchable input box, upon which the website suggests top most skills listed for a given title or gives the top most employers for the given location or suggests companies hiring at a given location. The users will also be able to see any job postings that are listed for a given title/location/company.
-        </div>  
-        <div>This is my another div</div> 
+
+        <div class="intro">  
+            <div class="intro-text">
+                Job Trends is a data visualization site that fetches and displays job postings for a given title. Job Trends, aggregates all the skills, companies hiring, job posting locations from job posts and displays as pie charts, representing a quick snapshot of what the job postings contain. To try it out, please enter a title below ....
+            </div>
+            <div class="user-input">
+                <input type="text" name="user-input-text" placeholder="Enter a title..." value="">
+                <input class="user-input-btn" type="submit" value="Get Insights!!">
+            </div>
+        </div> 
+        
+        <div class="results">
+            <div class="successful-results" hidden>
+                <div class="graphs">
+                    <div class="skills">
+                    </div>
+                    <div class="companies">
+                    </div>
+                    <div class="locations">
+                    </div>
+                </div>
+                <div class="job-posts"></div>
+            </div>
+
+            <div class="unsuccessful-results" hidden>
+                <div class="unsuccessful-results-msg">Sorry, we couldnt pull any results for the given title</div>
+            </div>
+        </div>
+
     </div>
     
 </body>

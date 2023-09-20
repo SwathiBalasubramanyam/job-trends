@@ -34,6 +34,9 @@ class jobTrends{
     handleJobPosts(){
         this.jobCardIns = [];
 
+        const superParent = document.querySelector(".job-posts");
+        this.removeChildren(superParent);
+        
         const jobCardsContainer = document.createElement("div")
         jobCardsContainer.className = "job-cards-container";
 
@@ -43,25 +46,25 @@ class jobTrends{
             jobCardsContainer.appendChild(jobCardIns.domEle);
         })
 
-        const superParent = document.querySelector(".job-posts");
-        while(superParent.firstChild){
-            superParent.removeChild(superParent.firstChild)
-        }
         superParent.appendChild(jobCardsContainer);
         this.jobCardIns[0].showDetails();
         this.plotGraph();
     }
     
     plotGraph(){
+        let num = 10;
+
         const skillEle = document.querySelector(".skills")
+        this.removeChildren(skillEle)
         const skillGraphEle = document.createElement("canvas")
         skillGraphEle.id = "skills-graph"
         skillEle.appendChild(skillGraphEle)
-        let num = 15;
 
         plotGraph(this.jobPostsIns.skillsCnt, "skills-graph", `${num} most listed skills for ${this.currentTitle}`, num);
 
         const companiesEle = document.querySelector(".companies")
+        this.removeChildren(companiesEle)
+
         const companiesGraphEle = document.createElement("canvas")
         companiesGraphEle.id = "companies-graph"
         companiesEle.appendChild(companiesGraphEle)
@@ -69,11 +72,19 @@ class jobTrends{
 
 
         const locationsEle = document.querySelector(".locations")
+        this.removeChildren(locationsEle)
+
         const locationsGraphEle = document.createElement("canvas")
         locationsGraphEle.id = "locations-graph"
         locationsEle.appendChild(locationsGraphEle)
         plotGraph(this.jobPostsIns.locationsCnt, "locations-graph", `Top ${num} locations for ${this.currentTitle}`, num);
 
+    }
+
+    removeChildren(domEle){
+        while(domEle.firstChild){
+            domEle.removeChild(domEle.firstChild)
+        }
     }
 }
 
