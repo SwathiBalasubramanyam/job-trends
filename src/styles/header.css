@@ -15,6 +15,9 @@ body {
 .header > * {
     border: 2px solid green;
     padding: 5px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .about-me {
