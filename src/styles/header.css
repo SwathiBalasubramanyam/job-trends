@@ -6,24 +6,34 @@ body {
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid red;
+}
+
+.header > * {
+    border: 2px solid green;
+    padding: 5px;
 }
 
 .about-me {
-    margin: 30px;
+    display: flex
 }
-
 .title {
     color: #0077b5;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 50px;
-    font-weight: 750;
-    margin-top: 20px;
+    font-weight: bold;
 }
 
-.header-link > img {
+img {
+    padding: 10px;
+    padding-top: 15px;
     height: 27px;
     width: 27px;
-    margin-right: 5px;
 }
 
+.nav-bar-user-input > * {
+    border: 2px solid red;
+}

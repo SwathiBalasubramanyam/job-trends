@@ -12,13 +12,15 @@
 .graphs > * {
     height: 300px;
     margin: 1%;
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #skills-graph, #companies-graph, #locations-graph {
     width: 100%;
     height: 100%;
-    background-color: white;
-    border-radius: 20px;
 }
 
 .job-posts {
@@ -28,7 +30,6 @@
 
 .job-posts > * {
     margin: 1%;
-    background-color: white;
     height: 700px;
     overflow: auto;
 }
@@ -40,6 +41,7 @@
 }
 
 .job-cards-container > * {
+    background-color: white;
     border: 0.0001px solid #D3D3D3;
     border-radius: 5px;
     padding: 30px;
@@ -47,11 +49,9 @@
     cursor: pointer;
 }
 
-.job-cards-container > *:hover{
-    background-color: #D3D3D3;
-}
-
 .job-desc-container {
+    background-color: white;
+    border-radius: 5px;
     width: 100%;
     justify-content: center;
 }
@@ -87,4 +87,7 @@
     text-align: justify;
 }
 
-
+.unsuccessful-results {
+    margin-left: 40%;
+    margin-right: 30%;
+}

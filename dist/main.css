@@ -60,28 +60,37 @@ body {
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid red;
+}
+
+.header > * {
+    border: 2px solid green;
+    padding: 5px;
 }
 
 .about-me {
-    margin: 30px;
+    display: flex
 }
-
 .title {
     color: #0077b5;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 50px;
-    font-weight: 750;
-    margin-top: 20px;
+    font-weight: bold;
 }
 
-.header-link > img {
+img {
+    padding: 10px;
+    padding-top: 15px;
     height: 27px;
     width: 27px;
-    margin-right: 5px;
 }
 
-
+.nav-bar-user-input > * {
+    border: 2px solid red;
+}
 /*!***********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/page_content.css ***!
   \***********************************************************************************************************/
@@ -91,6 +100,7 @@ body {
 }
 
 .intro{
+    margin-top: 1%;
     margin-left: 30%;
     margin-right: 30%;
     padding: 20px;
@@ -109,13 +119,13 @@ body {
     justify-content: space-around;
 }
 
-input {
+/* input {
     margin: 5px;
     text-align: center;
     border: 0.5px solid gray;
     border-radius: 10px;
     height: 20px;
-}
+} */
 
 ::-webkit-input-placeholder{
     text-align: center;
@@ -141,13 +151,15 @@ input {
 .graphs > * {
     height: 300px;
     margin: 1%;
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #skills-graph, #companies-graph, #locations-graph {
     width: 100%;
     height: 100%;
-    background-color: white;
-    border-radius: 20px;
 }
 
 .job-posts {
@@ -157,7 +169,6 @@ input {
 
 .job-posts > * {
     margin: 1%;
-    background-color: white;
     height: 700px;
     overflow: auto;
 }
@@ -169,6 +180,7 @@ input {
 }
 
 .job-cards-container > * {
+    background-color: white;
     border: 0.0001px solid #D3D3D3;
     border-radius: 5px;
     padding: 30px;
@@ -176,11 +188,9 @@ input {
     cursor: pointer;
 }
 
-.job-cards-container > *:hover{
-    background-color: #D3D3D3;
-}
-
 .job-desc-container {
+    background-color: white;
+    border-radius: 5px;
     width: 100%;
     justify-content: center;
 }
@@ -216,7 +226,10 @@ input {
     text-align: justify;
 }
 
-
+.unsuccessful-results {
+    margin-left: 40%;
+    margin-right: 30%;
+}
 
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!

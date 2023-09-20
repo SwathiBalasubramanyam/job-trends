@@ -9,12 +9,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <title>JobTrends</title>
-    <link rel="icon" href="./../../imgs/data_visualization_background.jpg" type="image/png">
+    <link rel="icon" href="./../../imgs/data-visualization.png" type="image/png">
 </head>
 <body>
     <header class="header">
-        <div class="title">Job Trends</div>
         <div class="about-me">
+            <div class="title">Job Trends</div>
             <div class="about-me-links">
                 <a class="header-link" href="https://github.com/SwathiBalasubramanyam" target="_blank">
                     <img src="./imgs/github.png" alt="">
@@ -23,6 +23,15 @@
                     <img src="./imgs/linkedin.png" alt="">
                 </a>
             </div>
+        </div>
+
+        <div class="nav-bar-user-input">
+            <input type="text" name="nav-user-input-text" placeholder="Enter a title..." value="">
+            <input class="nav-user-input-btn" type="submit" value="Get Insights!!">
+        </div>
+
+        <div class="nav-bar-jobs">
+            <img src="./imgs/job.png" alt="">
         </div>
     </header>
 
@@ -53,7 +62,7 @@
             </div>
 
             <div class="unsuccessful-results" hidden>
-                <div class="unsuccessful-results-msg">Sorry, we couldnt pull any results for the given title</div>
+                <div class="unsuccessful-results-msg">Sorry, we couldnt pull any results for the given title.</div>
             </div>
         </div>
 
