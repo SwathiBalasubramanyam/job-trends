@@ -1,7 +1,7 @@
 # JobTrends
 
 ## Background 
-JobTrends is a data visualization website that displays current job trends based on a given title or a location. Users can enter title / location/ company in a searchable input box, upon which the website suggests top most skills listed for a given title or gives the top most employers for the given location or suggests companies hiring at a given location. The users will also be able to see any job postings that are listed for a given title/location/company.
+Job Trends is a data visualization site that fetches and displays job postings for a given title. Job Trends, aggregates all the skills, companies hiring, job posting locations from job posts and displays as pie charts, representing a quick snapshot of what the job postings contain.
 
 ## Technologies Used
 * Javascript
@@ -13,10 +13,11 @@ JobTrends is a data visualization website that displays current job trends based
 ![plot](./imgs/wireframe2.png)
 
 ## Functionality
-* Introduction Modal to describe the website to users
-* On clicking "lets get started, users will be taken to a page where a default title will be selected and skills will be displayed for that title.
-* Users can hover over the graph to get the exact percentage data values
-* Users can choose to enter title/location/company on which the page is re-rendered, with the donut having the new data.
+* Introduction text to describe the website to users
+* On providing title, job posts will be pulled and an aggregate of skills, companies, location will be displayed as pie charts..
+* Users can hover over the graph to get the exact data values
+* Users can choose to enter a different title on which the page is re-rendered, with the chart having the new data.
+* Users will be able to like/dislike a job posting.
 
 ## Implementation Timeline
 * Friday Afternoon & Weekend - 
@@ -32,7 +33,5 @@ JobTrends is a data visualization website that displays current job trends based
 * Thursday Morning
     * buffer for any un-forseen issues.
 
-## Data Links 
-    * https://www.peopledatalabs.com/top-employers-dataset
-    * https://www.peopledatalabs.com/top-skills-us-engineers-dataset
+## Data Links
     * https://www.kaggle.com/datasets/arshkon/linkedin-job-postings?resource=download

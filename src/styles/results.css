@@ -1,22 +1,24 @@
 .results {
-    margin-left: 5%;
-    margin-right: 5%;
-    border: 5px solid white;
+    margin: 2%;
     display: flex;
     flex-direction: column;
 }
 
 .graphs {
     display: flex;
-    justify-content: space-between;
-    border: 5px solid white;
+    justify-content: space-around;
+}
+
+.graphs > * {
     height: 300px;
+    margin: 1%;
 }
 
 #skills-graph, #companies-graph, #locations-graph {
     width: 100%;
     height: 100%;
-    border-top: 1px solid white;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .job-posts {
@@ -24,23 +26,65 @@
     flex-direction: row;
 }
 
+.job-posts > * {
+    margin: 1%;
+    background-color: white;
+    height: 700px;
+    overflow: auto;
+}
+
 .job-cards-container {
     width: 30%;
-    height: 1000px;
-    border: 2px solid black;
-    overflow: auto;
-    padding: 5px;
     display: flex;
     flex-direction: column;
+}
 
+.job-cards-container > * {
+    border: 0.0001px solid #D3D3D3;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.job-cards-container > *:hover{
+    background-color: #D3D3D3;
 }
 
 .job-desc-container {
     width: 100%;
-    height: 1000px;
-    border: 2px solid red;
-    overflow: auto;
-    padding: 5px;
     justify-content: center;
 }
+
+.job-desc-container > * {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.job-desc-title {
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.job-desc-img {
+    height: 27px;
+    width: 27px;
+    margin-right: 5px;
+}
+
+.job-desc-details {
+    display: flex;
+}
+
+.job-desc-clw {
+    text-align: center;
+    padding: 4px;
+}
+
+.job-desc-desc {
+    border-top: 2px solid black;
+    padding-top: 20px;
+    text-align: justify;
+}
+
 
