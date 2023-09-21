@@ -137,4 +137,8 @@ class jobTrends{
 
 function main() {
     new jobTrends();
+    document.querySelector(".title").addEventListener("click", () => {
+        window.location.reload();
+    });
+
 }
