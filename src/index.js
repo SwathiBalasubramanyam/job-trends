@@ -180,9 +180,9 @@ class jobTrends{
 
 function main() {
     new jobTrends();
+    localStorage.removeItem("jobIds");
     document.querySelector(".title").addEventListener("click", () => {
         window.location.reload();
-        localStorage.removeItem("jobIds");
     });
 
 }
