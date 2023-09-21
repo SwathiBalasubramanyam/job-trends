@@ -19,7 +19,7 @@ export class jobPosts{
 
         for (const [_, jobPost] of Object.entries(this.allJobPosts)) {
             let postingsTitle = jobPost['title'].toLowerCase();
-            if (postingsTitle !== this.titleInput){
+            if (postingsTitle !== this.titleInput.toLowerCase()){
                 continue;
             }
 

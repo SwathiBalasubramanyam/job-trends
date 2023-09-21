@@ -13,6 +13,7 @@ class jobTrends{
         this.userTitleInput = document.querySelector("input[name='nav-user-input-text']")
         this.jobPostsSuccess = document.querySelector(".successful-results")
         this.jobPostsFaliure = document.querySelector(".unsuccessful-results")
+        this.introModal = document.querySelector(".intro");
 
         this.savedJobsBtn = document.querySelector(".nav-bar-jobs")
         this.savedJobsBtn.addEventListener("click", this.getSavedJobs.bind(this))
@@ -21,13 +22,21 @@ class jobTrends{
             this.userTitleInput.value = ""
         })
 
-        this.getInsightsBtn.addEventListener("click", this.getInsights.bind(this))
+        this.getInsightsBtn.addEventListener("click", this.getInsights.bind(this));
+
+        this.navbar = document.querySelector(".header");
+        this.navbar.classList.add("hidden");
+
+        this.getStartedBtn = document.querySelector(".intro-modal-btn");
+        this.getStartedBtn.addEventListener("click", () => {
+            this.navbar.classList.remove("hidden");
+            this.introModal.classList.add("hidden");
+        })
 
     }
 
     async getInsights(event){
         event.preventDefault();
-        this.hideIntroModal();
         this.currentTitle = this.userTitleInput.value
         this.jobPostsIns = new jobPosts(this.currentTitle);
         await this.jobPostsIns.fetchJobs()
@@ -101,17 +110,8 @@ class jobTrends{
         }
     }
 
-    hideIntroModal(){
-        this.pageContent = document.querySelector(".page-content");
-        this.introModal = document.querySelector(".intro");
-        if (this.introModal){
-            this.pageContent.removeChild(this.introModal)
-        }
-    }
-
     async getSavedJobs(event){
         event.preventDefault();
-        this.hideIntroModal();
         hideDomEle(document.querySelector(".graphs"));
         const savedJobs = getJobsFromLs();
 
