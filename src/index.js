@@ -50,7 +50,6 @@ class jobTrends{
             this.jobPostsFaliure.setAttribute("hidden", "hidden")
             this.handleJobPosts(this.jobPostsIns);
             this.plotGraph();
-
         }
     }
 

@@ -10,6 +10,10 @@ export function plotGraph(data, domId, displayText, num){
         graphBackgroundColors = graphBackgroundColors.concat(backgroundColors)
     }
 
+    // if(domId === "skills-graph"){
+    //   return
+    // }
+
     new Chart(domId, {
         type: "pie",
         data: {
