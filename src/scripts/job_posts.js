@@ -39,7 +39,6 @@ export class jobPosts{
                 this.locationsCnt[jobPost['location']] = 0;
             }
             this.locationsCnt[jobPost['location']] += 1;
-        }
-        
+        }        
     }
 }

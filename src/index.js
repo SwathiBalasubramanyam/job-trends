@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", main);
 class jobTrends{
 
     constructor(){
+        this.searchTerms = ['lead software engineer', 'software engineer', 'software engineer in test', 'c++ software engineer', 'java software engineer', 'embedded software architect', 'software analyst', 'software engineering manager', 'software engineer i'];
         this.getInsightsBtn = document.querySelector(".nav-user-input-btn");
         this.userTitleInput = document.querySelector("input[name='nav-user-input-text']")
         this.jobPostsSuccess = document.querySelector(".successful-results")
@@ -21,6 +22,8 @@ class jobTrends{
         this.userTitleInput.addEventListener("click", () => {
             this.userTitleInput.value = ""
         })
+
+        this.userTitleInput.addEventListener("keyup", this.showResults.bind(this));
 
         this.getInsightsBtn.addEventListener("click", this.getInsights.bind(this));
 
@@ -38,6 +41,7 @@ class jobTrends{
     async getInsights(event){
         event.preventDefault();
         this.currentTitle = this.userTitleInput.value
+        this.removeAutocompleteResults();
         this.jobPostsIns = new jobPosts(this.currentTitle);
         await this.jobPostsIns.fetchJobs()
             .then(this.jobPostsIns.getJobs.bind(this.jobPostsIns));
@@ -100,7 +104,6 @@ class jobTrends{
         locationsGraphEle.id = "locations-graph"
         locationsEle.appendChild(locationsGraphEle)
         plotGraph(this.jobPostsIns.locationsCnt, "locations-graph", `Some of the job locations..`, num);
-
     }
 
     removeChildren(domEle){
@@ -132,6 +135,46 @@ class jobTrends{
                     this.handleJobPosts(this.savedJobPostsIns);
                 }
             });
+    }
+
+    autocompleteMatch(input) {
+        if (input == '') {
+          return [];
+        }
+        var reg = new RegExp(input)
+        return this.searchTerms.filter(function(term) {
+            if (term.match(reg)) {
+              return term;
+            }
+        });
+      }
+
+    showResults(event) {
+        let val = event.target.value.toLowerCase();
+        let res = document.querySelector(".autocomplete-results");
+        let ul = document.createElement("ul");
+        this.removeAutocompleteResults();
+
+        let terms = this.autocompleteMatch(val);
+        for (let i=0; i<terms.length; i++) {
+            let li = document.createElement("li");
+            li.innerText = terms[i];
+            li.addEventListener("click", this.setInput.bind(this));
+            ul.appendChild(li);
+        }
+        res.appendChild(ul);
+    }
+
+    setInput(event){
+        this.removeAutocompleteResults();
+        this.userTitleInput.value = event.target.innerText
+    }
+
+    removeAutocompleteResults() {
+        let res = document.querySelector(".autocomplete-results");   
+        while (res.firstChild){
+            res.removeChild(res.firstChild)
+        } 
     }
 }
 

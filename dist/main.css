@@ -97,27 +97,13 @@ body {
     justify-content: center;
 }
 
-.nav-bar-user-input > * {
-    margin: 2% 1% 1% 1%;
-    border: 0.5px solid gray;
-    border-radius: 10px;
-    font-size: 16px;
-    text-align: center;
-}
-
 ::-webkit-input-placeholder{
     text-align: center;
     font-family: 'Raleway', sans-serif;
-
 }
 
 .nav-user-input-text {
     outline: none;
-}
-
-.nav-user-input-btn{
-    cursor: pointer;
-    background-color: #a8d4ff;
 }
 
 .nav-bar-jobs {
@@ -140,6 +126,51 @@ body {
     width: 27px;
 }
 
+.nav-user-input-btn{
+    width: 150px;
+    margin: 1.75%;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #a8d4ff;
+}
+
+.nav-user-input-text {
+    width: 300px;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 4%;
+    padding: 5px;
+}
+
+.autocomplete-form {
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+}
+
+.autocomplete-form > * {
+    background-color: white;
+}
+
+.autocomplete-results ul li{
+    text-align: center;
+    padding: 4px;
+}
+
+.autocomplete-results ul li:hover {
+    background-color: #a8d4ff;
+}
+
+.autocomplete-results ul {
+    width: 300px;
+    padding: 6px;
+    position: absolute;
+    cursor: default;
+    background-color: white;
+}
 /*!***********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/page_content.css ***!
   \***********************************************************************************************************/
