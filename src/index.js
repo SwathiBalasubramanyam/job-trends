@@ -1,6 +1,8 @@
 import {jobPosts} from "./scripts/job_posts.js"
 import { jobCard } from "./scripts/job_card.js";
 import { plotGraph} from "./scripts/graph.js";
+import { hideDomEle, showDomEle, getJobsFromLs } from "./scripts/utils.js";
+
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -13,12 +15,12 @@ class jobTrends{
         this.jobPostsFaliure = document.querySelector(".unsuccessful-results")
 
         this.savedJobsBtn = document.querySelector(".nav-bar-jobs")
-
         this.savedJobsBtn.addEventListener("click", this.getSavedJobs.bind(this))
 
         this.userTitleInput.addEventListener("click", () => {
             this.userTitleInput.value = ""
         })
+
         this.getInsightsBtn.addEventListener("click", this.getInsights.bind(this))
 
     }
@@ -37,11 +39,13 @@ class jobTrends{
         } else {
             this.jobPostsSuccess.removeAttribute("hidden")
             this.jobPostsFaliure.setAttribute("hidden", "hidden")
-            this.handleJobPosts();
+            this.handleJobPosts(this.jobPostsIns);
+            this.plotGraph();
+
         }
     }
 
-    handleJobPosts(){
+    handleJobPosts(jobPostsIns){
         this.jobCardIns = [];
 
         const superParent = document.querySelector(".job-posts");
@@ -50,7 +54,7 @@ class jobTrends{
         const jobCardsContainer = document.createElement("div")
         jobCardsContainer.className = "job-cards-container";
 
-        this.jobPostsIns.jobPosts.forEach((jobPost) => {
+        jobPostsIns.jobPosts.forEach((jobPost) => {
             const jobCardIns = new jobCard(jobPost);
             this.jobCardIns.push(jobCardIns);
             jobCardsContainer.appendChild(jobCardIns.jobCardDomEle);
@@ -58,11 +62,11 @@ class jobTrends{
 
         superParent.appendChild(jobCardsContainer);
         this.jobCardIns[0].showDetails();
-        this.plotGraph();
     }
     
     plotGraph(){
         let num = 10;
+        showDomEle(document.querySelector(".graphs"));
 
         const skillEle = document.querySelector(".skills")
         this.removeChildren(skillEle)
@@ -108,22 +112,27 @@ class jobTrends{
     async getSavedJobs(event){
         event.preventDefault();
         this.hideIntroModal();
-        this.hideGraphs();
-        
-        this.currentTitle = this.userTitleInput.value
-        this.jobPostsIns = new jobPosts(this.currentTitle);
-        await this.jobPostsIns.fetchJobs()
-            .then(this.jobPostsIns.getJobs.bind(this.jobPostsIns));
+        hideDomEle(document.querySelector(".graphs"));
+        const savedJobs = getJobsFromLs();
 
-        if(!this.jobPostsIns.jobPosts.length){
-            this.jobPostsSuccess.setAttribute("hidden", "hidden")
-            this.jobPostsFaliure.removeAttribute("hidden")
-        } else {
-            this.jobPostsSuccess.removeAttribute("hidden")
-            this.jobPostsFaliure.setAttribute("hidden", "hidden")
-            this.handleJobPosts();
-        }
-
+        this.savedJobPostsIns = new jobPosts();
+        await this.savedJobPostsIns.fetchJobs()
+            .then(() => {
+                this.savedJobPostsIns.jobPosts = [];
+                for (const [_, jobPost] of Object.entries(this.savedJobPostsIns.allJobPosts)){
+                    if (savedJobs.includes(jobPost["job_id"])){
+                        this.savedJobPostsIns.jobPosts.push(jobPost);
+                    }
+                }
+                if(!this.savedJobPostsIns.jobPosts.length){
+                    this.jobPostsSuccess.setAttribute("hidden", "hidden")
+                    this.jobPostsFaliure.removeAttribute("hidden")
+                } else {
+                    this.jobPostsSuccess.removeAttribute("hidden")
+                    this.jobPostsFaliure.setAttribute("hidden", "hidden")
+                    this.handleJobPosts(this.savedJobPostsIns);
+                }
+            });
     }
 }
 

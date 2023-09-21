@@ -220,10 +220,6 @@ body {
     cursor: pointer;
 }
 
-/* div[is-shown='is-shown']{
-    background-color: blue;
-} */
-
 .job-desc-container {
     background-color: white;
     border-radius: 5px;
@@ -236,24 +232,34 @@ body {
     padding-right: 20px;
 }
 
+.job-desc-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.job-desc-details {
+    display: flex;
+    flex-direction: column;
+}
+
 .job-desc-title {
     font-size: 30px;
     padding-top: 20px;
 }
 
+.job-desc-clw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.job-desc-clw > * {
+    padding: 5px;
+}
+
 .job-desc-img {
     height: 27px;
     width: 27px;
-    margin-right: 5px;
-}
-
-.job-desc-details {
-    display: flex;
-}
-
-.job-desc-clw {
-    text-align: center;
-    padding: 4px;
 }
 
 .job-desc-desc {
@@ -267,6 +273,21 @@ body {
     margin-right: 30%;
 }
 
+.card-shown{
+    background-color: #a8d4ff;
+}
+
+.hidden{
+    display: none;
+}
+
+.save-job-btn {
+    /* border: 2px solid blue; */
+    margin: 2%;
+    padding: 0px, 30px, 0px, 30px;
+    border-radius: 5px;
+    border-color: #D3D3D3;
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
