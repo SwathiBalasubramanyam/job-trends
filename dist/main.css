@@ -1,9 +1,9 @@
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/reset.css ***!
-  \****************************************************************************************************/
+\*******************************************************************************************************/
 /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+    v2.0 | 20110126
+    License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -51,7 +51,7 @@ table {
 }
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/header.css ***!
-  \*****************************************************************************************************/
+    \*****************************************************************************************************/
 body {
     font-size: 18px;
     background-color: #f2f2f2;
@@ -64,11 +64,12 @@ body {
     display: flex;
     justify-content: space-around;
     background-color: white;
-    height: 75px;
+    height: 10%;
     width: 100%;
 }
 
 .header > * {
+    /* width: 33%; */
     flex: 1;
     margin: 0.75%
 }
@@ -102,10 +103,6 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-.nav-user-input-text {
-    outline: none;
-}
-
 .nav-bar-jobs {
     display: flex;
     flex-direction: column;
@@ -128,7 +125,7 @@ body {
 
 .nav-user-input-btn{
     width: 150px;
-    margin: 1.75%;
+    margin: 2.5%;
     border: 0.5px solid gray;
     border-radius: 5px;
     text-align: center;
@@ -143,6 +140,7 @@ body {
     text-align: center;
     margin-top: 4%;
     padding: 5px;
+    outline: none;
 }
 
 .autocomplete-form {
